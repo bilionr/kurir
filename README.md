@@ -1,6 +1,6 @@
 # Kurir API - Manual Instruction
 
-## Cara Menjalankan Aplikasi
+## Gradin Digital Agency
 Jangan lupa untuk melakukan langkah-langkah berikut sebelum menjalankan aplikasi:
 
 1. Buat file `.env`  
