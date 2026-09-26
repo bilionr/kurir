@@ -1,75 +1,87 @@
-# Kurir API - Setup & Testing Guide
+# Kurir API - Manual Instruction
 
-## How to Run
-Don't forget to do these steps before running the application:
+## Cara Menjalankan Aplikasi
+Jangan lupa untuk melakukan langkah-langkah berikut sebelum menjalankan aplikasi:
 
-1. **Make `.env` file**  
-   Copy the example environment file:
+1. **Buat file `.env`**  
+   Salin (copy) file contoh environment:
    ```bash
    cp .env.example .env
    ```
-Set up database
+   
+Setup database
 
-Open the .env file and configure your database credentials (e.g., DB_DATABASE=kurir_db, DB_USERNAME=root, etc.). Make sure the database is already created in your MySQL/DBMS.
+Buka file .env dan atur kredensial database Anda (contoh: DB_DATABASE=kurir_db, DB_USERNAME=root, dll). Pastikan database tersebut sudah Anda buat sebelumnya di MySQL/DBMS Anda.
 
 Generate App Key
 
-Bash
+```bash
 php artisan key:generate
-Run Migrations
+```
+Jalankan Migrasi
 
-Create the tables in your database:
+Buat tabel di dalam database Anda:
 
-Bash
+```bash
 php artisan migrate
-How to Test the CRUD
-This project uses isolated tests to simulate a real CRUD lifecycle. Run them in this exact order:
+```
+Cara Menguji CRUD:
 
-Test Create
+Test Tambah Data (Create)
 
-Bash
+```bash
 php artisan test --filter test_tambah
-Note: After running this, check your database client (phpMyAdmin/DBeaver) to verify that the new data is successfully added.
+```
+Catatan: Setelah menjalankan perintah ini, cek database client untuk memverifikasi apakah data baru berhasil ditambahkan.
 
-Test Update
+Test Ubah Data (Update)
 
-Bash
+```bash
 php artisan test --filter test_update
-Note: After running this, check your database again to verify that the data you just added has been successfully updated.
+```
 
-Test Delete
+Test Hapus Data (Delete)
 
-Bash
+```bash
 php artisan test --filter test_hapus
-Note: After running this, check your database one last time to verify that the data is completely deleted.
+```
+Catatan: Setelah menjalankan perintah ini, cek database untuk terakhir kalinya guna memverifikasi apakah data tersebut benar-benar telah hilang/dihapus.
 
-How to Test Search Indexing & Filtering
-To test the API endpoints for searching and filtering, you need to populate the database with dummy data first.
+Cara Menguji Pencarian (Search) & Filter
+Untuk menguji fitur pencarian dan filter pada API, Anda perlu mengisi database dengan data dummy terlebih dahulu.
 
-Seed the database
+Jalankan Seeder database
 
-Generate random dummy data:
+Masukkan puluhan data dummy secara acak:
 
-Bash
+```bash
 php artisan db:seed
-Start the server
+```
+Nyalakan server lokal
 
-Bash
+```bash
 php artisan serve
-View all data
+```
+Lihat semua data
 
-Go to your browser or Postman and open:
+Buka browser Anda (atau gunakan aplikasi seperti Postman) dan akses URL:
 
+```bash
 http://127.0.0.1:8000/kurirs
+```
 
-Test Search by Name
+Test Pencarian Nama
 
-Determine one name from the results, then try searching for it using the ?search parameter:
+Pilih salah satu nama dari hasil yang muncul di layar, lalu coba lakukan pencarian menggunakan parameter ?search (atau sesuai dengan kode Anda, misal ?nama):
 
-http://127.0.0.1:8000/kurirs?search=budi (replace 'budi' with the actual name)
+```bash
+http://127.0.0.1:8000/kurirs?search=budi (ganti 'budi' dengan sebagian nama yang ingin dicari)
+```
 
-Test Filter by Level
+Test Filter Level
 
-Try to fetch only the couriers that have a specific level by using the ?level parameter:
+Coba panggil hanya data kurir yang berada di level tertentu (misalnya level 1) dengan menambahkan parameter ?level:
 
+```
 http://127.0.0.1:8000/kurirs?level=1
+```
