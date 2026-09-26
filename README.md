@@ -3,29 +3,29 @@
 ## Cara Menjalankan Aplikasi
 Jangan lupa untuk melakukan langkah-langkah berikut sebelum menjalankan aplikasi:
 
-1. **Buat file `.env`**  
+1. Buat file `.env`  
    Salin (copy) file contoh environment:
    ```bash
    cp .env.example .env
    ```
    
-Setup database
+2. Setup database
 
 Buka file .env dan atur kredensial database Anda (contoh: DB_DATABASE=kurir_db, DB_USERNAME=root, dll). Pastikan database tersebut sudah Anda buat sebelumnya di MySQL/DBMS Anda.
 
-Generate App Key
+3. Generate App Key
 
 ```bash
 php artisan key:generate
 ```
-Jalankan Migrasi
+4. Jalankan Migrasi
 
 Buat tabel di dalam database Anda:
 
 ```bash
 php artisan migrate
 ```
-Cara Menguji CRUD:
+5. Cara Menguji CRUD:
 
 Test Tambah Data (Create)
 
@@ -47,7 +47,7 @@ php artisan test --filter test_hapus
 ```
 Catatan: Setelah menjalankan perintah ini, cek database untuk terakhir kalinya guna memverifikasi apakah data tersebut benar-benar telah hilang/dihapus.
 
-Cara Menguji Pencarian (Search) & Filter
+6. Cara Menguji Pencarian (Search) & Filter
 Untuk menguji fitur pencarian dan filter pada API, Anda perlu mengisi database dengan data dummy terlebih dahulu.
 
 Jalankan Seeder database
